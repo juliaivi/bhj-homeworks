@@ -18,8 +18,7 @@ function fontSizeActiv(event) {
         book.classList.remove("book_fs-small");
         book.classList.add("book_fs-big");
     } else {
-        book.classList.remove("book_fs-small"); 
-        book.classList.remove("book_fs-big"); 
+        book.classList.remove("book_fs-small", "book_fs-big"); 
     }
 }
 
@@ -31,16 +30,13 @@ function textColorActiv(event) {
     let color = event.target.dataset.textColor;
 
     if (color == 'black') {
-        book.classList.remove("book_color-whitesmoke"); 
-        book.classList.remove("book_color-gray");
+        book.classList.remove("book_color-whitesmoke","book_color-gray"); 
         book.classList.add("book_color-black");
     } else if (color == "gray") {
-        book.classList.remove("book_color-whitesmoke"); 
-        book.classList.remove("book_color-black");
+        book.classList.remove("book_color-whitesmoke", "book_color-black"); 
         book.classList.add("book_color-gray");
     } else {
-        book.classList.remove("book_color-black"); 
-        book.classList.remove("book_color-gray"); 
+        book.classList.remove("book_color-black","book_color-gray"); 
         book.classList.add("book_color-whitesmoke");
     }
 }
@@ -53,16 +49,13 @@ function colorBg(event) {
     let color = event.target.dataset.bgColor;
 
     if (color == 'black') {
-        book.classList.remove("book_bg-white"); 
-        book.classList.remove("book_bg-gray");
+        book.classList.remove("book_bg-white", "book_bg-gray"); 
         book.classList.add("book_bg-black");
     } else if (color == "gray") {
-        book.classList.remove("book_bg-white"); 
-        book.classList.remove("book_bg-black");
+        book.classList.remove("book_bg-white", "book_bg-black"); 
         book.classList.add("book_bg-gray");
     } else {
-        book.classList.remove("book_bg-black"); 
-        book.classList.remove("book_bg-gray"); 
+        book.classList.remove("book_bg-black", "book_bg-gray"); 
         book.classList.add("book_bg-white");
     }
 }
