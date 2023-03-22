@@ -41,7 +41,8 @@ function answerClient(event) {
             <div class="message__text">${answer}</div>
         </div>
         `;
-    
+        
+    inputMessage.value = "";
     robotResponse(messages);
     timer = startTimer;
 }
