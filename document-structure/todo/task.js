@@ -29,7 +29,7 @@ function addText(event) {
 
  function removeText(elem) {
     elem.querySelector(".task__remove").addEventListener("click", () => {
-    elem.remove();  
+        elem.remove();  
         localStorage.setItem("key", tasksList.innerHTML);    
     })
 }
@@ -41,9 +41,9 @@ tasksAdd.addEventListener("click", (event) => {
 
 for (let task of tasks) {
     task.querySelector('.task__remove').addEventListener('click', () =>  {
-    task.remove()
-    localStorage.setItem("key", tasksList.innerHTML);
- })
+        task.remove();
+        localStorage.setItem("key", tasksList.innerHTML);
+    })
 }
 
 
