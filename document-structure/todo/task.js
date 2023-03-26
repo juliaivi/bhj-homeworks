@@ -21,8 +21,6 @@ drawTasks(mus)
 
 tasksList.addEventListener("click", removeTask)
 
-// Дальше только функции, за плейн код - дам пизды
-
 function initUserTaskList() {
     let userTasks;
 

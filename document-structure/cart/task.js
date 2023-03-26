@@ -73,11 +73,7 @@ function changeCount(elem) {
 function searchCart(cartProduct, dataId) {
     let cartProductList = Array.from(cartProduct.querySelectorAll('.cart__product'));
 
-    return cartProductList.find((elem) => {
-        if (elem.dataset.id == dataId) {
-            return elem;
-        }
-    })
+    return cartProductList.find((elem) => elem.dataset.id == dataId);
 }
 
 function endPositionElement(elem) {
