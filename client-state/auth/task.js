@@ -18,27 +18,23 @@ function creatingRequest(event) {
 
     const formData = new FormData(signinForm);
     const xhr = new XMLHttpRequest;
+    xhr.responseType = 'json';
     
     xhr.onload = () => {
-        if (xhr.status >= 400) {
-            console.log(`ошибка ${xhr.status} : ${xhr.statusText}`);
-        } else if (xhr.status >= 200) {
-            let answer = JSON.parse(xhr.responseText);
-            
-            if (answer.success == true) {
-                userId.innerText = answer.user_id;
-                signin.classList.remove('signin_active');
-                welcome.classList.add('welcome_active');
+        let answer = xhr.responseText;
+        if (answer.success == true) {
+            userId.innerText = answer.user_id;
+            signin.classList.remove('signin_active');
+            welcome.classList.add('welcome_active');
                 
-                user = {userId:answer.user_id,};
+            user = {userId:answer.user_id,};
 
-                localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("user", JSON.stringify(user));
 
-            } else {
-                clearField(control);
-                alert("Неверный логин/пароль");
-            }
-        }
+        } else {
+            clearField(control);
+            alert("Неверный логин/пароль");
+        }  
     }
 
     xhr.open("POST", 'https://students.netoservices.ru/nestjs-backend/auth');
@@ -51,22 +47,18 @@ function initUser() {
     if (localStorage.length == undefined || localStorage.length == 0 || localStorage.length == null) {
         return false;
     }
-
-    try {
-        user = JSON.parse(localStorage.getItem("user"));
-        if (user == "" || user == null || user == undefined) {
-            return false;
-        }
-       
-        if (user) {
-            signin.classList.remove('signin_active');
-            userId.innerText = user.userId;
-            welcome.classList.add("welcome_active");
-        } else {
-            signin.classList.add("signin_active");
-        }
-    } catch {
+    
+    user = JSON.parse(localStorage.getItem("user"));
+    if (user == "" || user == null || user == undefined) {
         return false;
+    }
+       
+    if (user) {
+        signin.classList.remove('signin_active');
+        userId.innerText = user.userId;
+        welcome.classList.add("welcome_active");
+    } else {
+        signin.classList.add("signin_active");
     }
 }
 
@@ -80,6 +72,6 @@ function exitUser() {
 
 function clearField(elem) {
     elem.forEach((el) => {
-        el.value = "";
+        el.reset();
     })
 }

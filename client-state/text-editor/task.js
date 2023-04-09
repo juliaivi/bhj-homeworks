@@ -7,11 +7,7 @@ clearEditor.addEventListener("click", removeEditor);
 geteditorValue();
 
 function geteditorValue() {
-    try {
-        editor.value = localStorage.getItem("editor");   
-    } catch {
-        return false;
-    }
+    editor.value = localStorage.getItem("editor");   
 }
 
 function editorValue() {
